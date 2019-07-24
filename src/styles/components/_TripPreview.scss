@@ -1,0 +1,26 @@
+.trip-preview {
+  list-style-type: none;
+  // min-width:300px;
+  cursor: pointer;
+}
+
+.avatars {
+  position: relative;
+  top: -90px;
+  left: 6px;
+}
+
+.participants {
+  margin-left: -5px;
+}
+.img-participant{
+  box-shadow: 0 0 4px 0px black;
+  
+}
+// .owner{
+//   box-shadow: 0 0 4px 0px black;
+//   z-index: 1111;
+//   position: relative;
+//   top: -23px;
+//     right: -275px;
+// }

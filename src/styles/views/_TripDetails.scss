@@ -1,0 +1,180 @@
+.trip-details {
+  background: white;
+  height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  background: rgba(253, 253, 253, 0.726);
+  max-width: 62%;
+  height: 100%;
+  display: grid;
+  // grid-gap: 20px;
+  padding: 0;
+  grid-template-rows: 5fr 7fr;
+  grid-template-columns: 3fr 6fr;
+  grid-template-areas:
+    "owner-details trip-desc"
+    "trip-members map"
+}
+
+i {
+  cursor: pointer;
+}
+i:hover{
+  opacity: 0.8;
+}
+
+.owner-details {
+  grid-area: owner-details;
+  border-left: 0.5px #e5e5e5 solid;
+  border-right: 0.5px #e5e5e5 solid;
+  border-bottom: 0.5px #e5e5e5 solid;
+}
+
+.owner-details .img-name {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.owner-details .user-img {
+  padding: 2px;
+  margin: 30px 0 15px 0;
+  width: 120px;
+  border-radius: 50%;
+  border: 0.5px solid rgb(105, 105, 105);
+}
+
+.owner-details .chat-title {
+  padding: 0px 0px 0px 15px;
+  font-family: "Roboto";
+  transition: 0.3s;
+}
+
+.owner-details .material-icons:hover {
+  opacity: 0.8;
+}
+
+.trip-desc {
+  grid-area: trip-desc;
+  border-right: 0.5px #e5e5e5 solid;
+}
+
+.trip-desc .details-btns {
+  padding: 20px;
+  height: 100%;
+}
+
+.trip-desc .details {
+  height: 100%;
+}
+
+.trip-desc .types {
+  margin: 30px 0px 20px 0px;
+  padding: 0;
+}
+
+.trip-desc .type {
+  background-color: #8bc34a;
+  color: white;
+  margin-left: 10px;
+  padding: 4px;
+  border-radius: 9px;
+  font-size: 0.95rem;
+}
+.trip-desc .type:hover {
+  opacity: 0.8;
+}
+
+.trip-desc .types li:first-child {
+  margin-left: 0px;
+}
+
+.trip-members {
+  grid-area: trip-members;
+  padding: 20px;
+  border-left: 0.5px #e5e5e5 solid;
+  border-right: 0.5px #e5e5e5 solid;
+}
+
+.trip-members h2 {
+  text-align: center;
+}
+
+.trip-members .members {
+  padding: 10px;
+}
+
+.trip-members .pendings {
+  padding: 20px;
+}
+
+.btn-status {
+  cursor: pointer;
+  margin-bottom: 5px;
+  height: 45px;
+  width: max-content;
+  font-weight: 500;
+  font-family: "Roboto";
+  font-size: 1.4rem;
+  background-color: #8bc34a;
+  color: white;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+.map {
+  grid-area: map;
+  padding: 20px;
+  border-right: 0.5px #e5e5e5 solid;
+
+}
+
+
+@media screen and (max-width: 1350px) {
+  .container {
+    max-width: 70%;
+  }
+  
+}
+@media screen and (max-width: 1290px) {
+  .container {
+    max-width: 80%;
+  }
+  
+}
+@media screen and (max-width: 1150px) {
+  .container {
+    max-width: 85%;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .container {
+    max-width: 92%;
+  }
+}
+@media screen and (max-width: 988px) {
+  .container {
+    max-width: 99%;
+  }
+}
+@media screen and (max-width: 940px) {
+  .container {
+    max-width: 100%;
+    grid-template-rows: 1fr 1fr 2fr 2fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "owner-details"
+    "trip-desc"
+    "map"
+    "trip-members"
+  }
+  .trip-desc .type {
+    margin-left: 6px;
+    margin-bottom: 6px;
+    padding: 4px;
+    border-radius: 9px;
+    font-size: 0.9rem;
+  }
+}

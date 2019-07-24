@@ -1,0 +1,52 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 600px;
+  background-image: url("../assets/img/bg-images/hero-2.jpg");
+  background-size: cover;
+}
+
+.my-trips-title, .all-trips-title {
+  margin: 0px 0px 30px 80px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 33px;
+}
+
+.my-trips {
+  padding: 40px;
+}
+
+.all-trips {
+  // margin-top: 50px;
+  padding: 50px;
+}
+
+
+.btn-add {
+  margin-bottom: 30px;
+  position: absolute;
+  /* width: 137px; */
+  /* height: 36px; */
+  left: 86%;
+  top: 634px;
+  padding: 5px;
+  background: orangered;
+  color: white;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  width: 108px;
+  height: 40px;
+  line-height: 19px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.btn-add:hover {
+  opacity: 1;
+}

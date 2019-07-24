@@ -1,0 +1,25 @@
+.menu{
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    top: 61px;
+    left: 0px;
+    padding: 20px;
+    background: rgb(253, 253, 253);
+    border-right: 0.5px #e5e5e5 solid;
+    z-index: 1000;
+}
+
+.menu div{
+    margin-bottom: 30px;
+    border-bottom: 0.5px #cecece solid;
+
+}
+
+.link-menu{
+    font-family: "Roboto";
+    padding: 5px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}

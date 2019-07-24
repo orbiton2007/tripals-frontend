@@ -1,0 +1,38 @@
+
+html {
+  background: #fff;
+  height: 100%;
+}
+body{
+  height: 100vh;
+}
+main{
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around{
+  justify-content: space-around;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+li {
+  list-style-type: none;
+}

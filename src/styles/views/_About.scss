@@ -1,0 +1,36 @@
+section {
+    flex-grow: 1;
+  }
+
+  .about-page-wrapper {
+    width: 90%;
+    padding-top: 30px;
+    margin: 0 auto;
+    h1 {
+      color: black;
+      margin: 0;
+    }
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    p {
+      color: gray;
+    }
+    .about-item {
+      margin: 15px;
+      padding: 20px;
+      width: 300px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        margin-bottom: 30px;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
