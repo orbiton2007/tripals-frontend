@@ -1,7 +1,7 @@
 <template>
   <li class="member-container" v-if="user">
     <div class="flex column">
-      <img class="user-img" :src="user.imgUrl" />
+      <img class="user-img" @click="goUserProfile" :src="user.imgUrl" />
       <div class="flex">
         <h4 class="name">{{user.firstName}} {{user.lastName}}</h4>
       </div>
@@ -32,7 +32,11 @@ export default {
     }
   },
   computed: {},
-  methods: {}
+  methods: {
+    goUserProfile() {
+      this.$router.push(`/UserProfile/${this.user._id}`);
+    },
+  }
 };
 </script>
 

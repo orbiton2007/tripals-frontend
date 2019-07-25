@@ -89,6 +89,7 @@ export default {
         aboutMe: "",
         yearOfBirth: "",
         interests: "",
+        notifications:[],
         pendingIn: [],
         memberIn: [],
         myTrips: []

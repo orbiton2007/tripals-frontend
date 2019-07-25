@@ -14,15 +14,12 @@
 
 <script>
 import TripPreview from "./TripPreview";
-// import { Carousel, Slide } from "vue-carousel";
 export default {
   props: {
     trips: Array
   },
   components: {
     TripPreview,
-    // Carousel,
-    // Slide
   },
 };
 </script>

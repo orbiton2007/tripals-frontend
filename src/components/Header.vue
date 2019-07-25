@@ -12,6 +12,7 @@
           <span class="dark">Signup</span>
         </router-link>
         <button class="btn-link dark" v-if="!loggedInUser" @click="toggleLogin">Login</button>
+        <a href="#" @click="openRequests"><span class="dark">Requests</span></a>
         <router-link to="/about">
           <span class="dark">About</span>
         </router-link>
@@ -22,6 +23,7 @@
       </div>
       <UserMenu v-if="showUserMenu" :user="loggedInUser" />
       <AppMenu v-if="showMenu" />
+      <Requests v-if="showRequests" />
     </div>
   </section>
 </template>
@@ -30,6 +32,7 @@
 <script>
 import UserMenu from "./UserMenu";
 import AppMenu from "./AppMenu";
+import Requests from "./Requests";
 export default {
   props: {
     colorBg: {
@@ -40,7 +43,8 @@ export default {
   data() {
     return {
       showMenu: false,
-      showUserMenu: false
+      showUserMenu: false,
+      showRequests: false
     };
   },
   created() {},
@@ -58,11 +62,15 @@ export default {
     },
     openMenu() {
       this.showMenu = !this.showMenu;
+    },
+    openRequests(){
+      this.showRequests = !this.showRequests;
     }
   },
   components: {
     UserMenu,
-    AppMenu
+    AppMenu,
+    Requests
   }
 };
 </script>

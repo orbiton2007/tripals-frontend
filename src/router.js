@@ -5,6 +5,7 @@ import About from './views/About.vue'
 import TripEdit from './views/TripEdit.vue'
 import TripDetails from './views/TripDetails.vue'
 import Signup from './views/Signup.vue'
+import UserAccount from './views/UserAccount.vue'
 import UserProfile from './views/UserProfile.vue'
 
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/TripDetails/:id',
       name: 'TripDetails',
       component: TripDetails
+    },
+    {
+      path: '/UserAccount/:id',
+      name: 'UserAccount',
+      component: UserAccount
     },
     {
       path: '/UserProfile/:id',

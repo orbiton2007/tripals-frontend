@@ -1,6 +1,6 @@
 .trip-chat{
     position: fixed;
-    bottom: 3px;
+    bottom: 1px;
     right: 0px;
     height: 400px;
     width: 500px;
@@ -12,7 +12,6 @@
 .div-btn-close{
     height: 6%;
     width: 100%;
-    // margin-bottom: 5px;
     border-bottom: 0.5px #e5e5e5 solid;
 }
 .btn-close{
@@ -23,15 +22,13 @@
 }
 .group-chat {
     padding: 10px;
-    height: 78%;
+    height: 81%;
     overflow: scroll;
     overflow-x: hidden;
-    // scroll-behavior: inherit;
-    // scr
 }
 
 .new-msg-area {
-    height: 18%;
+    height: 13%;
     width: 100%;
     box-shadow: inset 0px 0px 1px 0px black
 }
@@ -47,8 +44,8 @@ li{
 }
 
 .new-msg-input {
-    margin-bottom: 5px;
-    padding: 5px 5px 20px 5px;
+    padding: 5px;
+    align-self: center;
     width: 92%;
     height: 100%;
 }
@@ -57,8 +54,7 @@ li{
 }
 
 i{
-    margin-bottom: 5px;
-    padding: 5px 5px 20px 5px;
+    padding: 5px;
     align-self: center;
     cursor: pointer;
     background: none;

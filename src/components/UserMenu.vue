@@ -1,6 +1,7 @@
 <template>
   <section v-if="user" class="user-menu flex column">
     <a href="#" @click="goUserProfile">User Profile</a>
+    <a href="#" @click="goUserAccount">User Account</a>
     <a href="#" @click="logout">Log Out</a>
     <h2></h2>
     <h2></h2>
@@ -11,7 +12,7 @@
 <script>
 export default {
   props: {
-      user: Object
+    user: Object
   },
   data() {
     return {};
@@ -25,6 +26,9 @@ export default {
     goUserProfile() {
       this.$router.push(`/UserProfile/${this.user._id}`);
     },
+    goUserAccount() {
+      this.$router.push(`/UserAccount/${this.user._id}`);
+    }
   }
 };
 </script>

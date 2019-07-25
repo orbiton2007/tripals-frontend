@@ -1,6 +1,5 @@
 import AuthService from '../Services/AuthService.js'
 import UserService from '../Services/UserService.js'
-import SocketService from '../Services/SocketService.js'
 
 export default {
     state: {
@@ -51,7 +50,7 @@ export default {
             try {
                 const loggedInUser = await AuthService.login(user)
                 context.commit({ type: 'setLoggedInUser', user: loggedInUser })
-                SocketService.emit('create room', { loggedInUser })
+                await context.dispatch({ type: 'createRoom', loggedInUser })
             } catch (err) {
                 throw err;
             }
@@ -60,7 +59,7 @@ export default {
             try {
                 const loggedInUser = await AuthService.signup(userCredential)
                 context.commit({ type: 'setLoggedInUser', user: loggedInUser })
-                SocketService.emit('createRoom', loggedInUser._id)
+                await context.dispatch({ type: 'createRoom', loggedInUser })
             } catch (err) {
                 throw err;
             }
@@ -95,7 +94,7 @@ export default {
             );
             user.memberIn.splice(idx, 1);
             try {
-                await UserService.save(user)
+                await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
                 throw err;
             }
@@ -106,7 +105,7 @@ export default {
             );
             user.pendingIn.splice(idx, 1);
             try {
-                await UserService.save(user)
+                await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
                 throw err;
             }

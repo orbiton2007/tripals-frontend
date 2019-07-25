@@ -1,58 +1,38 @@
-.title-form-container {
-  border-left: 0.5px black solid;
-  border-right: 0.5px black solid;
-  background: rgb(253, 253, 253);
-  max-width: 70%;
-  height: 100%;
-  margin: 0 auto;
+.user-profile{
+    // height: 100%;
 }
 
-form {
-  height: 100%;
-  max-width: 80%;
-  margin: 0 auto;
+.container{
+    height: 100%;
+    background: rgb(253, 253, 253);
+    padding: 20px 50px 20px 50px;
+    border-left: 0.5px #e5e5e5 solid;
+    border-right: 0.5px #e5e5e5 solid;
+    border-bottom: 0.5px #e5e5e5 solid;
+    width: 60%;
+    margin: 0 auto;
+}
+.user-details{
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.img-user{
+    width: 180px;
+    box-shadow: 0 0 5px 2px black;
+    border: 0.5px solid rgb(105, 105, 105);
+    border-radius: 50%;
+    padding: 2px;
 }
 
-h2 {
-  padding: 50px 50px 40px 0px;
+.user-trips{
+    margin-bottom: 20px;
 }
 
-input,
-textarea {
-  width: 80%;
-  padding: 10px;
-  background-color: white;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 3px;
-  margin-bottom: 30px;
+.member-in{
+    margin-bottom: 20px;
 }
 
-.short-input {
-  width: 200px;
-}
-
-button {
-  margin-bottom: 30px;
-  padding: 5px;
-  background: #3F97FF;
-  color: white;
-  border-radius: 2px;
-  font-size: 1.5rem;
-  font-weight: 500;
-  width: 80px;
-  height: 40px;
-  line-height: 19px;
-}
-
-.div-img-user{
-  width: 100%;
-  padding: 20px;
-}
-
-.user-img {
-  margin-bottom: 30px;
-  width: 100px;
-  border-radius: 50%;
-  margin: 0 auto;
-  box-shadow: 0 0 3px black;
+.pendin-in{
+    margin-bottom: 20px;
 }

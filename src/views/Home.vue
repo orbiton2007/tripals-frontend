@@ -6,10 +6,10 @@
       <TripFilter class="filter" @setFilter="setFilter" />
     </div>
 
-    <!-- <h1 class="title-home">
+    <h1 class="title-home">
       It’s a big world.
       Exploring it with friends
-    </h1>-->
+    </h1>
     <button class="btn-add" @click="goEdit">New Trip</button>
     <div v-if="ownerTrips.length && loggedInUser" class="my-trips flex column">
       <h2 class="my-trips-title">My Trips</h2>

@@ -1,7 +1,7 @@
 <template>
   <li class="_Pending" v-if="user && owner && trip">
     <div class="flex">
-      <img class="user-img-_Pending" :src="user.imgUrl" />
+      <img class="user-img-_Pending" @click="goUserProfile" :src="user.imgUrl" />
       <div>
         <h5 class="user-details-_Pending-name">{{user.firstName}} {{user.lastName}}</h5>
         <h5 class="user-details-_Pending-age">{{user.age}}</h5>
@@ -51,6 +51,9 @@ export default {
     }
   },
   methods: {
+    goUserProfile() {
+      this.$router.push(`/UserProfile/${this.user._id}`);
+    },
     async requestApproved() {
       try {
         this.$store.dispatch({

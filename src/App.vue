@@ -16,12 +16,18 @@ export default {
     return {};
   },
   created() {
-    SocketService.on("welcome", txt => {
-      console.log(txt);
-      alert("txt arrive");
+    SocketService.on("welcome", msg => {
+      console.log(msg);
+      this.loggedInUser.notifications.push(msg)
+    //   this.notifications.push(msg);
+        // alert("txt arrive");
     }); 
   },
-  computed: {},
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUser;
+    }
+  },
   methods: {},
   components: {}
 };

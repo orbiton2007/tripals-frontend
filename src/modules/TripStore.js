@@ -1,13 +1,13 @@
 import TripService from '../Services/TripService.js'
-import UserService from '../Services/UserService.js'
-import SocketService from '../Services/SocketService.js'
 
 
 export default {
-    // strict: true,
     state: {
         trips: [],
         ownerTrips: [],
+        tripsUserShared: [],
+        tripsUserPendigIn: [],
+        tripsUserMemberIn: []
     },
     mutations: {
         setTrips(state, { trips }) {
@@ -28,6 +28,15 @@ export default {
         save(state, { trip }) {
             state.trips.push(trip)
         },
+        setTripsUserShared(state, { userId }) {
+            state.tripsUserShared = state.trips.filter(currTrip => currTrip.owner._id === userId)
+        },
+        setTripsUserPendingIn(state, { userId }) {
+            state.tripsUserPendigIn = state.trips.filter(currTrip => currTrip.pendings.find(currUser => currUser.userId === userId))
+        },
+        setTripsUserMemberIn(state, { userId }) {
+            state.tripsUserMemberIn = state.trips.filter(currTrip => currTrip.members.find(currUser => currUser.userId === userId))
+        }
     },
     getters: {
         trips(state) {
@@ -35,6 +44,15 @@ export default {
         },
         ownerTrips(state) {
             return state.ownerTrips;
+        },
+        tripsUserShared(state) {
+            return state.tripsUserShared
+        },
+        tripsUserPendigIn(state) {
+            return state.tripsUserPendigIn
+        },
+        tripsUserMemberIn(state) {
+            return state.tripsUserMemberIn
         }
 
     },
@@ -49,7 +67,6 @@ export default {
                     );
                     context.commit({ type: 'setOwnerTrips', ownerTrips })
                 }
-                // return trips;
             } catch (err) {
                 throw err;
             }
@@ -70,7 +87,7 @@ export default {
             owner.myTrips.splice(idx, 1);
             try {
                 await TripService.remove(trip)
-                await UserService.save(owner)
+                await context.dispatch({ type: 'updateUser', user })
                 context.commit({ type: 'remove', id: trip._id })
             } catch (err) {
                 throw err;
@@ -103,16 +120,16 @@ export default {
                 throw err;
             }
         },
-        async joinTrip(context, { user, trip }) {
+        async joinToTrip(context, { user, trip, owner }) {
             trip.pendings.push({ userId: user._id });
             user.pendingIn.push({ tripId: trip._id });
             try {
-                await TripService.save(trip)
-                await UserService.save(user)
+                await context.dispatch({ type: 'save', trip })
+                await context.dispatch({ type: 'updateUser', user })
+                await context.dispatch({ type: 'joinTrip', user, trip, owner })
             } catch (err) {
-                throw err
+                throw err;
             }
-            SocketService.emit('join trip', { user, owner })
 
         },
         async removeUserFromTrip(context, { trip, user }) {
@@ -121,9 +138,9 @@ export default {
             );
             trip.members.splice(idx, 1);
             try {
-                await TripService.save(trip)
+                await context.dispatch({ type: 'save', trip })
             } catch (err) {
-                throw err
+                throw err;
             }
         },
         async cancelRequesInTrip(context, { trip, user }) {
@@ -132,9 +149,9 @@ export default {
             );
             trip.pendings.splice(idx, 1);
             try {
-                await TripService.save(trip)
+                await context.dispatch({ type: 'save', trip })
             } catch (err) {
-                throw err
+                throw err;
             }
         },
         async approveUserToTrip(context, { user, trip }) {
@@ -147,12 +164,11 @@ export default {
             user.pendingIn.splice(idxInUserPanding, 1);
             const idxInTripPendings = trip.pendings.findIndex(currUser => currUser.userId === user._id)
             trip.pendings.splice(idxInTripPendings, 1)
-
             try {
-                await TripService.save(trip)
-                await UserService.save(user)
+                await context.dispatch({ type: 'save', trip })
+                await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
-                throw err
+                throw err;
             }
         },
         async rejectUserFromTrip(context, { user, trip }) {
@@ -160,12 +176,11 @@ export default {
             user.pendingIn.splice(idxInUserPanding, 1);
             const idxInTripPendings = trip.pendings.findIndex(currUser => currUser.userId === user._id)
             trip.pendings.splice(idxInTripPendings, 1)
-
             try {
-                await TripService.save(trip)
-                await UserService.save(user)
+                await context.dispatch({ type: 'save', trip })
+                await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
-                throw err
+                throw err;
             }
         }
     }

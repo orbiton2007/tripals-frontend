@@ -67,31 +67,7 @@
       <div class="map">
         <google-map :location="trip.destination" />
       </div>
-      <!-- <div class="trip-weather">
-      <Weather :location="trip.destination" />
-      <Weather :location="trip.destination" @weather="setWeather" />
-      <template v-if="forecastWeather">
-        <div class="render-weather">
-          <div v-for="(item,i) in forecastWeather" :key="i">
-            <img class="weather-img" width="50" :src="item.img" />
-            <p class="weather-temp">{{item.minTemp}}/{{item.maxTemp}}</p>
-          </div>
-        </div>
-      </template>
-      </div>-->
       <div class="trip-members">
-        <!-- <button class="btn-participating" @click="toggleMembersModal">
-          Members
-          <span>{{trip.members.length}}</span>
-        </button>
-        <button
-          class="btn-pending"
-          @click="showPendingModal"
-          v-if="loggedInUser && owner._id === loggedInUser._id"
-        >
-          Pendings
-          <span class="waitingList-length" v-if="trip.pendings">{{trip.pendings.length}}</span>
-        </button>-->
         <h2>Members</h2>
         <ul class="members flex wrap">
           <TripMembers v-for="(userId,i) in trip.members" :key="i" :userId="userId" />
@@ -151,18 +127,18 @@ export default {
       return this.$store.getters.loggedInUser;
     },
     memberIn() {
-      var alreadyMember = this.loggedInUser.memberIn.find(
-        currTrip => currTrip.tripId === this.trip._id
+      var alreadyMember = this.trip.members.some(
+        currUser => currUser.userId === this.loggedInUser._id
       );
-      if (alreadyMember) return true;
-      else return false;
+      // console.log("157 member in ", alreadyMember);
+      return alreadyMember;
     },
     pendingIn() {
-      var pendingRequest = this.loggedInUser.pendingIn.find(
-        currTrip => currTrip.tripId === this.trip._id
+      var pendingRequest = this.trip.pendings.some(
+        currUser => currUser.userId === this.loggedInUser._id
       );
-      if (pendingRequest) return true;
-      else return false;
+      // console.log("167 pending in ", pendingRequest);
+      return pendingRequest;
     }
   },
   methods: {
@@ -182,11 +158,11 @@ export default {
     },
     async joinTrip() {
       try {
-        // socket join
         await this.$store.dispatch({
-          type: "joinTrip",
+          type: "joinToTrip",
           user: this.loggedInUser,
-          trip: this.trip
+          trip: this.trip,
+          owner: this.owner
         });
       } catch (err) {
         console.log("not update", err);

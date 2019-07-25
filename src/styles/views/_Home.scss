@@ -5,7 +5,7 @@
 
 .header {
   height: 600px;
-  background-image: url("../assets/img/bg-images/hero-2.jpg");
+  background-image: url("../assets/img/bg-images/bg-home.jpg");
   background-size: cover;
 }
 
@@ -36,7 +36,7 @@
   left: 86%;
   top: 634px;
   padding: 5px;
-  background: orangered;
+  background-color: #8bc34a;
   color: white;
   border-radius: 4px;
   font-size: 1.2rem;
@@ -49,4 +49,13 @@
 }
 .btn-add:hover {
   opacity: 1;
+}
+
+h1{
+  position: absolute;
+  top: 298px;
+  left: 36%;
+  color: white;
+  width: 397px;
+  text-shadow: 0 0 20px black;
 }
