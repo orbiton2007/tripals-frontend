@@ -16,12 +16,7 @@ export default {
     return {};
   },
   created() {
-    SocketService.on("welcome", msg => {
-      console.log(msg);
-      this.loggedInUser.notifications.push(msg)
-    //   this.notifications.push(msg);
-        // alert("txt arrive");
-    }); 
+   
   },
   computed: {
     loggedInUser() {

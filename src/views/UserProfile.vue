@@ -42,9 +42,16 @@ export default {
       id: userId
     });
     this.user = userToShow;
-    this.$store.commit({ type: "setTripsUserShared", userId });
-    this.$store.commit({ type: "setTripsUserPendingIn", userId });
-    this.$store.commit({ type: "setTripsUserMemberIn", userId });
+    try {
+      await this.$store.dispatch({
+        type: "loadTrips",
+      });
+      this.$store.commit({ type: "setTripsUserShared", userId });
+      this.$store.commit({ type: "setTripsUserPendingIn", userId });
+      this.$store.commit({ type: "setTripsUserMemberIn", userId });
+    } catch (err) {
+      console.log(err);
+    }
   },
   computed: {
     loginModal() {

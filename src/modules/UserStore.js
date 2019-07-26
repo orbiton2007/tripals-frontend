@@ -29,7 +29,7 @@ export default {
         },
         toggleLogin(state) {
             state.loginModal = !state.loginModal;
-        }
+        },
     },
     getters: {
         loggedInUser(state) {

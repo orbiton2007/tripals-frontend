@@ -3,16 +3,24 @@ import SocketService from '../Services/SocketService.js'
 export default {
     state: {
         msgs: [],
-        typingMsg: null
+        typingMsg: null,
+        requests: []
     },
     mutations: {
         setTyping(state, { typingMsg }) {
             state.typingMsg = typingMsg
+        },
+        setRequests(state, { msg }) {
+            console.log('im in user store', msg);
+            state.requests.push(msg)
         }
     },
     getters: {
         typingMsg(state) {
             return state.typingMsg
+        },
+        requests(state) {
+            return state.requests
         }
     },
     actions: {
@@ -34,10 +42,11 @@ export default {
         stopTyping(context, { chat, user }) {
             SocketService.emit('stop typing', { chat, user })
         },
-        createRoom(context, {loggedInUser}){
+        createRoom(context, { loggedInUser }) {
             SocketService.emit('create room', { loggedInUser })
         },
-        joinTrip(context, {user, trip, owner}){
+        joinTrip(context, { user, trip, owner }) {
+            
             SocketService.emit('join trip', { user, trip, owner })
         },
         async addChat(context, { newChat }) {
