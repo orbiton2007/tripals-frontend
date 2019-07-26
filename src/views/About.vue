@@ -7,15 +7,6 @@
   </section>
 
   <section  class="about-page-wrapper" > 
-      <div class="about-item">
-      <img src="../assets/img/about/yonatan1.png" alt>
-      <h1>Yonatan Galili</h1>
-      <p>Yonatan Galili,Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde exercitationem adipisci, architecto rem repellat accusantium ratione quidem voluptas vitae dignissimos
-         autem aliquid alias consequatur dolores, nostrum suscipit sequi iusto perspiciatis?.</p>
-      <a class="linkdin" href="https://www.linkedin.com/in/yonatan-galili/">
-       <i class="fab fa-linkedin"></i>
-      </a>
-    </div>
      <div class="about-item">
       <a href="https:/eitan02581.github.io/portofolio/">
         <img src="../assets/img/about/or1.png" alt>
