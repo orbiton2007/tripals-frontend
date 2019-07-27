@@ -4,6 +4,8 @@ import TripStore from './modules/TripStore.js'
 import UserStore from './modules/UserStore.js'
 import CountryStore from './modules/CountryStore.js'
 import SocketStore from './modules/SocketStore.js'
+import ChatStore from './modules/ChatStore.js'
+import NotificationsStore from './modules/NotificationsStore.js'
 
 
 Vue.use(Vuex)
@@ -17,12 +19,14 @@ export default new Vuex.Store({
 
   },
   actions: {
-  
+
   },
   modules: {
     TripStore,
     UserStore,
     CountryStore,
-    SocketStore
+    SocketStore,
+    ChatStore,
+    NotificationsStore
   }
 })

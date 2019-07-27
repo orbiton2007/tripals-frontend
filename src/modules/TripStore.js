@@ -21,7 +21,6 @@ export default {
             state.trips.splice(idx, 1)
         },
         update(state, { trip }) {
-
             var idx = state.trips.findIndex(cuurTrip => cuurTrip._id === trip._id)
             state.trips.splice(idx, 1, trip)
         },
@@ -73,8 +72,11 @@ export default {
         },
         async  getById(context, { tripId }) {
             try {
-                const trip = await TripService.getById(tripId)
-                return trip;
+                const tripToShow = context.state.trips.find(currTrip => currTrip._id === tripId)
+                if (!tripToShow) {
+                    var trip = await TripService.getById(tripId)
+                    return trip;
+                } else return tripToShow
             }
             catch (err) {
                 throw err;
@@ -120,13 +122,13 @@ export default {
                 throw err;
             }
         },
-        async joinToTrip(context, { user, trip, owner }) {
+        async joinToTrip(context, { user, trip, room }) {
             trip.pendings.push({ userId: user._id });
             user.pendingIn.push({ tripId: trip._id });
             try {
                 await context.dispatch({ type: 'save', trip })
                 await context.dispatch({ type: 'updateUser', user })
-                await context.dispatch({ type: 'joinTrip', user, trip, owner })
+                await context.dispatch({ type: 'joinTrip', user, trip, room })
             } catch (err) {
                 throw err;
             }

@@ -10,45 +10,21 @@
 }
 
 .my-trips-title, .all-trips-title {
-  margin: 0px 0px 30px 80px;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 33px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.7rem;
+  // line-height: 33px;
 }
-
+.all-trips-title {
+  margin-left: 80px;
+}
 .my-trips {
   padding: 40px;
 }
 
 .all-trips {
-  // margin-top: 50px;
-  padding: 50px;
-}
-
-
-.btn-add {
-  margin-bottom: 30px;
-  position: absolute;
-  /* width: 137px; */
-  /* height: 36px; */
-  left: 86%;
-  top: 634px;
-  padding: 5px;
-  background-color: #8bc34a;
-  color: white;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  width: 108px;
-  height: 40px;
-  line-height: 19px;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-.btn-add:hover {
-  opacity: 1;
+  margin: 40px 0px;
+  // padding: 50px;
 }
 
 h1{
@@ -58,4 +34,28 @@ h1{
   color: white;
   width: 397px;
   text-shadow: 0 0 20px black;
+}
+
+
+@media screen and (max-width: 650px) {
+  .header {
+    height: 600px;
+    background-image: url("../assets/img/bg-images/bg-home-respon.jpg");
+    background-size: cover;
+  }
+  h1{
+    position: absolute;
+    top: 200px;
+    left: 20%;
+    font-size: 1.6rem;
+    width: 257px;
+  }
+  .my-trips-title, .all-trips-title {
+    margin: 0px 0px 20px 20px;
+    font-size: 1.4rem;
+  }
+  .my-trips-title{
+    margin: 0px 0px 20px 0px;
+  }
+
 }

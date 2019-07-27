@@ -7,6 +7,12 @@
       <router-link class="link-menu" to="/about">About</router-link>
     </div>
     <div>
+      <router-link class="link-menu" to="/TripEdit">
+        New Trip
+        <!-- <span class="dark btn-new-trip">New Trip</span> -->
+      </router-link>
+    </div>
+    <div>
       <button class="btn-link dark link-menu" v-if="!loggedInUser" @click="toggleLogin">Login</button>
     </div>
     <div>
@@ -16,9 +22,11 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   created() {},
   computed: {
@@ -29,6 +37,7 @@ export default {
   methods: {
     toggleLogin() {
       this.$store.commit("toggleLogin");
+      this.$emit('closeMenu')
     }
   }
 };

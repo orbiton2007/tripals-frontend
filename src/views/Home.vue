@@ -10,14 +10,14 @@
       It’s a big world.
       Exploring it with friends
     </h1>
-    <button class="btn-add" @click="goEdit">New Trip</button>
+    <!-- <button class="btn-add" @click="goEdit">New Trip</button> -->
     <div v-if="ownerTrips.length && loggedInUser" class="my-trips flex column">
       <h2 class="my-trips-title">My Trips</h2>
       <TripList :trips="ownerTrips" />
     </div>
     <div class="all-trips flex column">
       <h2 class="all-trips-title">All Trips</h2>
-      <TripList :trips="trips" />
+      <TripListTrending :trips="trips" />
     </div>
   </section>
 </template>
@@ -25,6 +25,7 @@
 
 <script>
 import TripList from "../components/TripList";
+import TripListTrending from "../components/TripListTrending";
 import TripFilter from "../components/TripFilter";
 import AppHeader from "../components/Header";
 import Login from "../components/Login";
@@ -62,12 +63,13 @@ export default {
         console.log(err);
       }
     },
-    goEdit() {
-      this.$router.push("/TripEdit");
-    }
+    // goEdit() {
+    //   this.$router.push("/TripEdit");
+    // }
   },
   components: {
     TripList,
+    TripListTrending,
     TripFilter,
     AppHeader,
     Login

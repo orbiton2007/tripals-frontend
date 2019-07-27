@@ -1,25 +1,28 @@
 <template>
-  <div class="trip-preview" @click="goDetails">
-    <v-img xs2 :src="trip.imgUrl" aspect-ratio="1.6"></v-img>
+  <swiperSlide class="trip-preview">
+    <div @click="goDetails">
+      <v-img xs2 :src="trip.imgUrl" aspect-ratio="1.6"></v-img>
 
-    <div>
-      <h4>{{trip.destination}} - {{trip.title}}</h4>
-      <h5>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h5>
-    </div>
-    <div class="avatars">
-      <template v-if="trip.members.length">
-        <v-avatar v-for="(member, i) in members" :key="i" class="participants" size="38px">
-          <img class="img-participant" v-if="i<3" :src="member.imgUrl" />
-        </v-avatar>
-      </template>
+      <div>
+        <h4>{{trip.destination}} - {{trip.title}}</h4>
+        <h5>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h5>
+      </div>
+      <div class="avatars">
+        <template v-if="trip.members.length">
+          <v-avatar v-for="(member, i) in members" :key="i" class="participants" size="38px">
+            <img class="img-participant" v-if="i<3" :src="member.imgUrl" />
+          </v-avatar>
+        </template>
         <!-- <v-avatar class="owner" size="60px">
           <img v-if="owner" :src="owner.imgUrl" />
-        </v-avatar> -->
+        </v-avatar>-->
+      </div>
     </div>
-  </div>
+  </swiperSlide>
 </template>
 
 <script>
+import { swiperSlide } from "vue-awesome-swiper";
 export default {
   props: {
     trip: Object
@@ -29,7 +32,7 @@ export default {
   },
   data() {
     return {
-      members: [],
+      members: []
       // owner: {}
     };
   },
@@ -55,6 +58,9 @@ export default {
     goDetails() {
       this.$router.push(`/TripDetails/${this.trip._id}`);
     }
+  },
+  components: {
+    swiperSlide
   }
 };
 </script>

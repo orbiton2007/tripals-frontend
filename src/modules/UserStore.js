@@ -5,20 +5,20 @@ export default {
     state: {
         users: [],
         loggedInUser: AuthService.getLoggedInUser(),
-        pendings: [],
-        members: [],
+        // pendings: [],
+        // members: [],
         loginModal: false
     },
     mutations: {
         setLoggedInUser(state, { user }) {
             state.loggedInUser = user;
         },
-        setPendings(state, { pendings }) {
-            state.pendings = pendings;
-        },
-        setMembers(state, { members }) {
-            state.members = members;
-        },
+        // setPendings(state, { pendings }) {
+        //     state.pendings = pendings;
+        // },
+        // setMembers(state, { members }) {
+        //     state.members = members;
+        // },
         setUsers(state, { users }) {
             state.users = users;
         },
@@ -35,12 +35,12 @@ export default {
         loggedInUser(state) {
             return state.loggedInUser;
         },
-        pendings(state) {
-            return state.pendings;
-        },
-        members(state) {
-            return state.members;
-        },
+        // pendings(state) {
+        //     return state.pendings;
+        // },
+        // members(state) {
+        //     return state.members;
+        // },
         loginModal(state) {
             return state.loginModal;
         },

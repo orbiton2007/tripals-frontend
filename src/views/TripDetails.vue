@@ -72,7 +72,8 @@
         <ul class="members flex wrap">
           <TripMembers v-for="(userId,i) in trip.members" :key="i" :userId="userId" />
         </ul>
-        <ul class="pendings" v-if="loggedInUser && owner._id === loggedInUser._id">
+        <h2 v-if="loggedInUser && owner._id === loggedInUser._id && trip.pendings.length">Pendings</h2>
+        <ul class="pendings flex wrap" v-if="loggedInUser && owner._id === loggedInUser._id">
           <TripPendings
             v-for="(userId,i) in trip.pendings"
             :key="i"
@@ -115,6 +116,10 @@ export default {
         type: "getUserById",
         id: this.trip.owner._id
       });
+      await this.$store.dispatch({
+        type: "getRoom",
+        id: this.owner.notifications.roomId
+      });
     } catch (err) {
       console.log("in created", err);
     }
@@ -130,14 +135,12 @@ export default {
       var alreadyMember = this.trip.members.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
-      // console.log("157 member in ", alreadyMember);
       return alreadyMember;
     },
     pendingIn() {
       var pendingRequest = this.trip.pendings.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
-      // console.log("167 pending in ", pendingRequest);
       return pendingRequest;
     }
   },
@@ -158,11 +161,15 @@ export default {
     },
     async joinTrip() {
       try {
+        const room = await this.$store.dispatch({
+          type: "getRoom",
+          id: this.owner.notifications.roomId
+        });
         await this.$store.dispatch({
           type: "joinToTrip",
           user: this.loggedInUser,
           trip: this.trip,
-          owner: this.owner
+          room
         });
       } catch (err) {
         console.log("not update", err);

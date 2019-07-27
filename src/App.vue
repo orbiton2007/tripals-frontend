@@ -15,8 +15,17 @@ export default {
   data() {
     return {};
   },
-  created() {
-   
+  async created() {
+    if (this.loggedInUser) {
+      try {
+        await this.$store.dispatch({
+          type: "createRoom",
+          loggedInUser: this.loggedInUser
+        });
+      } catch (err) {
+        throw err;
+      }
+    }
   },
   computed: {
     loggedInUser() {

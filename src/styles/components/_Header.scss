@@ -30,6 +30,7 @@
   font-family: "Lobster";
   font-size: 2.2rem;
   font-weight: 500;
+  letter-spacing: 3px;
 }
 
 .navbar {
@@ -58,7 +59,12 @@ button {
   margin-left: 20px;
 }
 
-a {}
+button:hover {
+  opacity: 0.8;
+}
+button:focus {
+  outline: none;
+}
 
 .user-img {
   cursor: pointer;
@@ -67,18 +73,46 @@ a {}
   border-radius: 50%;
 }
 
+.user-img-menu {
+  width: 30px;
+  border-radius: 50%;
+  display: none;
+}
+
+.btn-new-trip {
+  font-weight: 550;
+  color: rgba(0, 0, 0, 0.904);
+}
+
+.dark:hover,
+.btn-new-trip:hover {
+  opacity: 0.7;
+  // margin-bottom: 5px;
+  // border-bottom: 2px solid black;
+}
+
 
 @media screen and (max-width: 600px) {
   .navbar {
-    max-width: 100%;
+    max-width: 97%;
   }
 
   .nav-links {
     display: none;
   }
-
+  .logo {
+    margin-left: 10px;
+  }
   .menu {
     display: block;
   }
 
+  .iconMenu-logo-div {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-img-menu {
+    display: block;
+  }
 }

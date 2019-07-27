@@ -1,23 +1,23 @@
 <template>
   <li class="_Pending" v-if="user && owner && trip">
-    <div class="flex">
+    <div class="flex column img-name-btns">
       <img class="user-img-_Pending" @click="goUserProfile" :src="user.imgUrl" />
       <div>
         <h5 class="user-details-_Pending-name">{{user.firstName}} {{user.lastName}}</h5>
-        <h5 class="user-details-_Pending-age">{{user.age}}</h5>
+        <!-- <h5 class="user-details-_Pending-age">{{user.age}}</h5> -->
       </div>
-    </div>
-    <div class="flex">
-      <i
-        class="material-icons"
-        v-if="loggedInUser && owner._id === loggedInUser._id"
-        @click="requestApproved"
-      >check</i>
-      <i
-        class="material-icons"
-        v-if="loggedInUser && owner._id === loggedInUser._id"
-        @click="requestRejected"
-      >close</i>
+      <div class="flex">
+        <i
+          class="material-icons"
+          v-if="loggedInUser && owner._id === loggedInUser._id"
+          @click="requestApproved"
+        >check</i>
+        <i
+          class="material-icons"
+          v-if="loggedInUser && owner._id === loggedInUser._id"
+          @click="requestRejected"
+        >close</i>
+      </div>
     </div>
   </li>
 </template>
@@ -41,8 +41,7 @@ export default {
         id: this.userId.userId
       });
     } catch (err) {
-      console.log('unknown',err);
-      
+      console.log("unknown", err);
     }
   },
   computed: {

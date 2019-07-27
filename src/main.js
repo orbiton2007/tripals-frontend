@@ -9,6 +9,9 @@ import '../src/assets/fonts/streamline-icons/css/style.css'
 import * as VueGoogleMaps from "vue2-google-maps";
 import VueSweetalert2 from 'vue-sweetalert2';
 // import VueCarousel from 'vue-carousel';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 const options = {
   // confirmButtonColor: '#41b882',

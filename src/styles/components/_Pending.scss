@@ -1,31 +1,28 @@
 .user-details-_Pending-name {
-    margin: 30px 30px 0px 10px;
-    font-size: 2rem;
-    font-weight: 500;
-    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
 }
 
-.user-details-_Pending-age {
-    margin: 0px 0px 0px 10px;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: black;
+.img-name-btns{
+    margin: 0px 10px 5px 0px;
+
 }
 
 .user-img-_Pending {
     cursor: pointer;
-    width: 60px;
-    margin: 10px 0px 10px 20px;
+    width: 40px;
+    margin: 3px 0px 3px 0px;
     border-radius: 50%;
-    border: 2px black solid;
 }
-
 
 li {
     list-style-type: none;
 }
 
-
 i {
     cursor: pointer;
+}
+i:hover {
+opacity: 0.7;
 }

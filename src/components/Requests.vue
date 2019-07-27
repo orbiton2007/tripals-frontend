@@ -1,8 +1,7 @@
 <template>
   <section class="requests">
-    <h4>Notifications</h4>
-    <ul v-if="requests">
-      <li v-for="(msg, i) in requests" :key="i">{{msg}}</li>
+    <ul v-if="room && requests">
+      <li class="request" v-for="(msg, i) in requests" :key="i">{{msg}}</li>
     </ul>
   </section>
 </template>
@@ -13,11 +12,14 @@ import SocketService from "../Services/SocketService";
 export default {
   data() {
     return {
-      // requests: []
+      room: null
     };
   },
-  created() {
-    // this.requests = SocketService.getRequests()
+  async created() {
+    this.room = await this.$store.dispatch({
+      type: "getRoom",
+      id: this.loggedInUser.notifications.roomId
+    });
   },
   computed: {
     loggedInUser() {

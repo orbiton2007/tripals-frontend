@@ -89,17 +89,16 @@ export default {
         aboutMe: "",
         yearOfBirth: "",
         interests: "",
-        notifications:[],
+        notifications: {roomId: ''},
         pendingIn: [],
         memberIn: [],
         myTrips: []
-      },
+      }
     };
   },
-  created() {
-  },
-  computed:{
-    loginModal(){
+  created() {},
+  computed: {
+    loginModal() {
       return this.$store.getters.loginModal;
     }
   },
@@ -111,6 +110,9 @@ export default {
         this.newUser.imgUrl = url;
       }
       try {
+        const newRoom = { msgs: [], requests: [] };
+        const room = await this.$store.dispatch({ type: "addRoom", newRoom });
+        this.newUser.notifications.roomId = room._id;
         await this.$store.dispatch({
           type: "signup",
           userCredential: this.newUser
@@ -118,7 +120,6 @@ export default {
         this.$router.push("/");
         this.$swal("Signup Successfully", "", "success");
       } catch (err) {
-        // swal
         this.$router.push("/");
         this.$swal("Email exsits, please login", "", "error");
       }

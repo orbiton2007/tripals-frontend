@@ -4,24 +4,16 @@ export default {
     state: {
         msgs: [],
         typingMsg: null,
-        requests: []
     },
     mutations: {
         setTyping(state, { typingMsg }) {
             state.typingMsg = typingMsg
         },
-        setRequests(state, { msg }) {
-            console.log('im in user store', msg);
-            state.requests.push(msg)
-        }
     },
     getters: {
         typingMsg(state) {
             return state.typingMsg
         },
-        requests(state) {
-            return state.requests
-        }
     },
     actions: {
         chatJoin(context, { chat, user }) {
@@ -43,26 +35,10 @@ export default {
             SocketService.emit('stop typing', { chat, user })
         },
         createRoom(context, { loggedInUser }) {
-            SocketService.emit('create room', { loggedInUser })
+            SocketService.emit('create room', loggedInUser )
         },
-        joinTrip(context, { user, trip, owner }) {
-            
-            SocketService.emit('join trip', { user, trip, owner })
+        joinTrip(context, { user, trip, room }) {
+            SocketService.emit('join trip', { user, trip, room })
         },
-        async addChat(context, { newChat }) {
-            try {
-                return await SocketService.add(newChat)
-            } catch (err) {
-                throw err;
-            }
-        },
-        async getChat(context, { id }) {
-            try {
-                return await SocketService.getChat(id)
-            } catch (err) {
-                throw err;
-            }
-        }
-
-    }
+    },
 }
