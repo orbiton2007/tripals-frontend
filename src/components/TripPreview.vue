@@ -3,9 +3,15 @@
     <div @click="goDetails">
       <v-img xs2 :src="trip.imgUrl" aspect-ratio="1.6"></v-img>
 
-      <div>
-        <h4>{{trip.destination}} - {{trip.title}}</h4>
-        <h5>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h5>
+      <div class="flex space-between">
+        <div>
+          <h4>{{trip.destination}} - {{trip.title}}</h4>
+          <h5>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h5>
+        </div>
+        <div>
+          <span class="likes-length">({{trip.likedBy.length}})</span>
+          <i class="material-icons like">favorite_border</i>
+        </div>
       </div>
       <div class="avatars">
         <template v-if="trip.members.length">

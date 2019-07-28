@@ -4,6 +4,7 @@
   background: none;
 }
 
+
 .colorBg {
   // background: linear-gradient(270deg, #7399fd 0%, #2ddaf2 100%);
   border-bottom: 1px black solid;
@@ -54,6 +55,9 @@
   color: white;
   text-decoration: none;
 }
+.nav-links a:hover {
+  opacity: 0.8;
+}
 
 button {
   margin-left: 20px;
@@ -81,7 +85,7 @@ button:focus {
 
 .btn-new-trip {
   font-weight: 550;
-  color: rgba(0, 0, 0, 0.904);
+  color: rgb(24, 24, 24);
 }
 
 .dark:hover,
@@ -91,6 +95,9 @@ button:focus {
   // border-bottom: 2px solid black;
 }
 
+.white{
+  color: white;
+}
 
 @media screen and (max-width: 600px) {
   .navbar {

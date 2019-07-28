@@ -173,6 +173,10 @@ export default {
   },
   methods: {
     async save() {
+      if (!this.loggedInUser) {
+        this.$store.commit("toggleLogin");
+        return;
+      }
       const file = this.$refs.upload.files[0];
       // loading.io
       if (file) {

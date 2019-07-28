@@ -5,57 +5,83 @@
 
 .header {
   height: 600px;
-  background-image: url("../assets/img/bg-images/bg-home.jpg");
+  background-image: url("../assets/img/bg-images/bg-big.jpg");
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.my-trips-title, .all-trips-title {
+.header .title-filter-container{
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.my-trips-title,
+.all-trips-title {
   margin-bottom: 20px;
   font-weight: 600;
   font-size: 1.7rem;
-  // line-height: 33px;
 }
-.all-trips-title {
-  margin-left: 80px;
+
+.title-btn-div {
+  width: 90%;
+  margin: 0 auto;
 }
+
 .my-trips {
   padding: 40px;
 }
 
 .all-trips {
   margin: 40px 0px;
-  // padding: 50px;
 }
 
-h1{
-  position: absolute;
-  top: 298px;
-  left: 36%;
+.header .title-filter-container h1 {
+  margin-bottom: 50px;
   color: white;
-  width: 397px;
+  width: 400px;
   text-shadow: 0 0 20px black;
+}
+
+.btn-show-all {
+  font-size: 1.3rem;
+  font-weight: 550;
+  color: rgb(70, 70, 70);
+}
+
+.btn-show-all:hover {
+  opacity: 0.8;
 }
 
 
 @media screen and (max-width: 650px) {
   .header {
-    height: 600px;
-    background-image: url("../assets/img/bg-images/bg-home-respon.jpg");
-    background-size: cover;
+    background-image: url("../assets/img/bg-images/bg-travel-small.jpg");
   }
-  h1{
-    position: absolute;
-    top: 200px;
-    left: 20%;
+  .header .title-filter-container{
+    margin-bottom: 50px;
+  }
+  .all-trips {
+    margin: 0px 0px;
+  }
+  h1 {
     font-size: 1.6rem;
-    width: 257px;
+    max-width: 260px;
   }
-  .my-trips-title, .all-trips-title {
+
+  .my-trips-title {
     margin: 0px 0px 20px 20px;
     font-size: 1.4rem;
   }
-  .my-trips-title{
+
+  .my-trips-title {
     margin: 0px 0px 20px 0px;
+    font-size: 1.4rem;
   }
 
 }

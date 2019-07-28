@@ -22,7 +22,13 @@
         <div class="details-btns flex column space-between">
           <div class="details flex space-between">
             <div>
-              <h2>{{trip.destination}}, {{trip.title}}</h2>
+              <h2>{{trip.destination}}, {{trip.title}}
+              <span>
+                <span class="likes-length">({{trip.likedBy.length}})</span>
+                <i class="material-icons like" v-if="unlikeTrip" @click="addLike">favorite_border</i>
+                <i class="material-icons like" v-if="likeTrip" @click="removeLike">favorite</i>
+              </span>
+              </h2>
               <h4>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h4>
             </div>
             <div>
@@ -93,7 +99,6 @@
 <script>
 import AppHeader from "../components/Header";
 import GoogleMap from "../components/GoogleMap";
-import Weather from "../components/Weather";
 import TripChat from "../components/TripChat";
 import Login from "../components/Login";
 import TripMembers from "../components/TripMembers";
@@ -142,6 +147,21 @@ export default {
         currUser => currUser.userId === this.loggedInUser._id
       );
       return pendingRequest;
+    },
+    unlikeTrip() {
+      if (this.loggedInUser) {
+        var userId = this.trip.likedBy.find(
+          currUser => currUser.userId === this.loggedInUser._id
+        );
+        if (!userId) return true;
+      } else return true;
+    },
+    likeTrip() {
+      if (this.loggedInUser) {
+        return this.trip.likedBy.some(
+          currUser => currUser.userId === this.loggedInUser._id
+        );
+      }
     }
   },
   methods: {
@@ -150,6 +170,36 @@ export default {
     },
     toggleChat() {
       this.showChat = !this.showChat;
+    },
+    async addLike() {
+      if (!this.loggedInUser) {
+        this.$store.commit("toggleLogin");
+        return;
+      }
+      try {
+        await this.$store.dispatch({
+          type: "addLike",
+          trip: this.trip,
+          user: this.loggedInUser
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async removeLike() {
+      if (!this.loggedInUser) {
+        this.$store.commit("toggleLogin");
+        return;
+      }
+      try {
+        await this.$store.dispatch({
+          type: "removeLike",
+          trip: this.trip,
+          user: this.loggedInUser
+        });
+      } catch (err) {
+        console.log(err);
+      }
     },
     async remove(trip) {
       try {
@@ -207,14 +257,10 @@ export default {
         console.log("not update", err);
       }
     },
-    setWeather(weather) {
-      this.forecastWeather = weather;
-    }
   },
   components: {
     AppHeader,
     GoogleMap,
-    Weather,
     TripChat,
     Login,
     TripMembers,

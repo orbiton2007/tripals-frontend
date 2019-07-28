@@ -1,22 +1,27 @@
 <template>
   <section class="home">
     <div class="header">
-      <AppHeader dark />
-      <Login v-if="loginModal" @setFilter="setFilter"/>
-      <TripFilter class="filter" @setFilter="setFilter" />
+      <AppHeader />
+      <Login v-if="loginModal" @setFilter="setFilter" />
+      <div class="title-filter-container">
+        <h1 class="title-home">
+          It’s a big world.
+          Exploring it with friends
+        </h1>
+        <TripFilter class="filter" @setFilter="setFilter" />
+      </div>
     </div>
 
-    <h1 class="title-home">
-      It’s a big world.
-      Exploring it with friends
-    </h1>
     <!-- <button class="btn-add" @click="goEdit">New Trip</button> -->
     <div v-if="ownerTrips.length && loggedInUser" class="my-trips flex column">
       <h2 class="my-trips-title">My Trips</h2>
       <TripList :trips="ownerTrips" />
     </div>
     <div class="all-trips flex column">
-      <h2 class="all-trips-title">All Trips</h2>
+      <div class="title-btn-div flex space-between">
+        <h2 class="all-trips-title">All Trips</h2>
+        <router-link class="btn-show-all" to="/AllTrips">Show all</router-link>
+      </div>
       <TripListTrending :trips="trips" />
     </div>
   </section>
@@ -32,8 +37,7 @@ import Login from "../components/Login";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   created() {
     this.setFilter();
@@ -62,7 +66,7 @@ export default {
       } catch (err) {
         console.log(err);
       }
-    },
+    }
     // goEdit() {
     //   this.$router.push("/TripEdit");
     // }

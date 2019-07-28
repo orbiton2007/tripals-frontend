@@ -7,6 +7,7 @@ import TripDetails from './views/TripDetails.vue'
 import Signup from './views/Signup.vue'
 import UserAccount from './views/UserAccount.vue'
 import UserProfile from './views/UserProfile.vue'
+import AllTrips from './views/AllTrips.vue'
 
 
 Vue.use(Router)
@@ -47,6 +48,11 @@ export default new Router({
       path: '/Signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/AllTrips',
+      name: 'AllTrips',
+      component: AllTrips
     },
   ]
 })

@@ -184,6 +184,23 @@ export default {
             } catch (err) {
                 throw err;
             }
+        },
+        async addLike(context, { trip, user }) {
+            trip.likedBy.push({ userId: user._id })
+            try {
+                await context.dispatch({ type: 'save', trip })
+            } catch (err) {
+                throw err;
+            }
+        },
+        async removeLike(context, { trip, user }) {
+            var idx = trip.likedBy.findIndex(currUser => currUser.userId === user._id)
+            trip.likedBy.splice(idx, 1)
+            try {
+                await context.dispatch({ type: 'save', trip })
+            } catch (err) {
+                throw err;
+            }
         }
     }
 }

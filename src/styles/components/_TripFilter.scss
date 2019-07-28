@@ -1,20 +1,16 @@
 .flex-container {
   width: 80%;
   max-width: 900px;
-  // margin: 0 auto;
-  margin-top: 370px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   align-content: center;
   flex-flow: row wrap;
   justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .flex-item {
-  height: 54px;
+  height: 50px;
   padding: 4px 0 4px 0px;
   margin-bottom: 32px;
   position: relative;
@@ -50,7 +46,6 @@ h5 {
 
 .type-container {
   flex: 1 1 32%;
-  z-index: 11111111;
   background: #fff;
   border-radius: 0 4px 4px 0;
 }
@@ -58,8 +53,6 @@ h5 {
 @media only screen and (max-width: 1060px) {
   .flex-container {
     width: 80%;
-    margin: 0 auto;
-    margin-top: 240px;
   }
 
   .destination-container {
@@ -83,9 +76,7 @@ h5 {
 @media only screen and (max-width: 700px) {
   
   .flex-container {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 243px;
+    width: 75%;
     border-radius: 4px;
   }
 
