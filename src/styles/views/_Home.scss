@@ -29,7 +29,7 @@
 }
 
 .title-btn-div {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -61,17 +61,19 @@
 
 @media screen and (max-width: 650px) {
   .header {
+    height: 730px;
     background-image: url("../assets/img/bg-images/bg-travel-small.jpg");
   }
   .header .title-filter-container{
-    margin-bottom: 50px;
+    margin-bottom: 110px;
   }
   .all-trips {
     margin: 0px 0px;
   }
-  h1 {
+  .header .title-filter-container h1 {
     font-size: 1.6rem;
     max-width: 260px;
+    margin-bottom: 110px;
   }
 
   .my-trips-title {

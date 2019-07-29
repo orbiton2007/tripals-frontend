@@ -1,10 +1,11 @@
 .trip-preview {
+  border-radius: 5px;
   list-style-type: none;
   cursor: pointer;
 }
 
 .like {
-  color: red;
+  color: rgba(201, 0, 0, 0.884);
   float: right;
 }
 .likes-length{
@@ -12,24 +13,62 @@
   font-weight: 600;
 }
 .avatars {
-  position: relative;
-  top: -90px;
-  left: 6px;
+  margin-top: -41px;
+  width: 100%;
 }
 
 .participants {
-  margin-left: -5px;
+  z-index: 1111;
 }
 
 .img-participant {
+  z-index: 1111;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   box-shadow: 0 0 4px 0px black;
-
 }
 
-// .owner{
-//   box-shadow: 0 0 4px 0px black;
-//   z-index: 1111;
-//   position: relative;
-//   top: -23px;
-//     right: -275px;
-// }
+.owner{
+  z-index: 1111;
+  margin-top: -5px;
+}
+.owner img{
+  z-index: 1111;
+  box-shadow: 0 0 4px 0px black;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+
+@media screen and (max-width: 500px) {
+  .avatars {
+    margin-top: -27px;
+  }
+  .participants {
+    z-index: 1111;
+  }
+  .owner{
+    z-index: 1111;
+    margin-top: -10px;
+  }
+  .owner img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+  i{
+    font-size: 1.2rem;
+  }
+  .likes-length{
+    font-size: 1rem;
+    font-weight: 600;
+  }
+.img-participant {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 0px black;
+}
+}
