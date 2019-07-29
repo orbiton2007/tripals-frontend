@@ -40,5 +40,22 @@ export default {
         joinTrip(context, { user, trip, room }) {
             SocketService.emit('join trip', { user, trip, room })
         },
+        socketLeaveTrip(context, trip){
+            console.log('trip in socket store', trip);
+            
+            SocketService.emit('leave trip', trip)
+        },
+        socketAddLike(context, trip){
+            SocketService.emit('like trip', trip)
+        },
+        socketRemoveLike(context, trip){
+            SocketService.emit('like trip', trip)
+        },
+        socketApproveUser(context, trip){
+            SocketService.emit('approve user', trip)
+        },
+        socketRejectUser(context, trip){
+            SocketService.emit('reject user', trip)
+        },
     },
 }

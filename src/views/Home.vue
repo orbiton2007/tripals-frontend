@@ -22,7 +22,7 @@
         <h2 class="all-trips-title">All Trips</h2>
         <router-link class="btn-show-all" to="/AllTrips">Show all</router-link>
       </div>
-      <TripListTrending :trips="trips" />
+      <TripListTrending :trips="mostPopularTrips" />
     </div>
   </section>
 </template>
@@ -48,6 +48,9 @@ export default {
     },
     ownerTrips() {
       return this.$store.getters.ownerTrips;
+    },
+    mostPopularTrips() {
+      return this.$store.getters.mostPopularTrips;
     },
     loggedInUser() {
       return this.$store.getters.loggedInUser;

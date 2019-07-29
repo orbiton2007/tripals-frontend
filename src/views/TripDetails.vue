@@ -22,12 +22,13 @@
         <div class="details-btns flex column space-between">
           <div class="details flex space-between">
             <div>
-              <h2>{{trip.destination}}, {{trip.title}}
-              <span>
-                <span class="likes-length">({{trip.likedBy.length}})</span>
-                <i class="material-icons like" v-if="unlikeTrip" @click="addLike">favorite_border</i>
-                <i class="material-icons like" v-if="likeTrip" @click="removeLike">favorite</i>
-              </span>
+              <h2>
+                {{trip.destination}}, {{trip.title}}
+                <span>
+                  <span class="likes-length">({{trip.likedBy.length}})</span>
+                  <i class="material-icons like" v-if="unlikeTrip" @click="addLike">favorite_border</i>
+                  <i class="material-icons like" v-if="likeTrip" @click="removeLike">favorite</i>
+                </span>
               </h2>
               <h4>{{trip.start| moment("MMMM Do ")}} - {{trip.end| moment("MMMM Do ")}}</h4>
             </div>
@@ -103,20 +104,27 @@ import TripChat from "../components/TripChat";
 import Login from "../components/Login";
 import TripMembers from "../components/TripMembers";
 import TripPendings from "../components/TripPendings";
-
+import SocketService from "../Services/SocketService";
 export default {
   data() {
     return {
       trip: null,
+      tripId: "",
       owner: null,
       forecastWeather: null,
       showChat: false
     };
   },
   async created() {
-    const tripId = this.$route.params.id;
+    SocketService.on("update trip", async (trip) => {
+      this.trip = trip;
+    });
+    this.tripId = this.$route.params.id;
     try {
-      this.trip = await this.$store.dispatch({ type: "getById", tripId });
+      this.trip = await this.$store.dispatch({
+        type: "getById",
+        tripId: this.tripId
+      });
       this.owner = await this.$store.dispatch({
         type: "getUserById",
         id: this.trip.owner._id
@@ -228,7 +236,7 @@ export default {
     async cancelRequest() {
       try {
         await this.$store.dispatch({
-          type: "cancelRequesInTrip",
+          type: "cancelRequestInTrip",
           trip: this.trip,
           user: this.loggedInUser
         });
@@ -256,7 +264,7 @@ export default {
       } catch (err) {
         console.log("not update", err);
       }
-    },
+    }
   },
   components: {
     AppHeader,

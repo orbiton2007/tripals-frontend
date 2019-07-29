@@ -68,7 +68,7 @@ export default {
       try {
         await this.$store.dispatch({
           type: "rejectUserFromTrip",
-          user: user,
+          user: this.user,
           trip: this.trip
         });
       } catch (err) {

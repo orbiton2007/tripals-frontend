@@ -4,7 +4,6 @@
   background: none;
 }
 
-
 .colorBg {
   // background: linear-gradient(270deg, #7399fd 0%, #2ddaf2 100%);
   border-bottom: 1px black solid;
@@ -14,6 +13,7 @@
 
 .menu {
   display: none;
+  cursor: pointer;
 }
 
 .logo-container,

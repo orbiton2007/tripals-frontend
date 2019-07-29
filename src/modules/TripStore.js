@@ -6,6 +6,7 @@ export default {
     state: {
         trips: [],
         ownerTrips: [],
+        mostPopularTrips: [],
         tripsUserShared: [],
         tripsUserPendigIn: [],
         tripsUserMemberIn: []
@@ -16,6 +17,9 @@ export default {
         },
         setOwnerTrips(state, { ownerTrips }) {
             state.ownerTrips = ownerTrips;
+        },
+        setMostPopularTrips(state, { trips }) {
+            state.mostPopularTrips = trips.sort((a, b) => b.likedBy.length - a.likedBy.length)
         },
         remove(state, { id }) {
             const idx = state.trips.findIndex(currTrip => currTrip._id === id)
@@ -45,6 +49,9 @@ export default {
         ownerTrips(state) {
             return state.ownerTrips;
         },
+        mostPopularTrips(state) {
+            return state.mostPopularTrips
+        },
         tripsUserShared(state) {
             return state.tripsUserShared
         },
@@ -61,6 +68,7 @@ export default {
             try {
                 const trips = await TripService.query(filter)
                 context.commit({ type: 'setTrips', trips })
+                context.commit({ type: 'setMostPopularTrips', trips })
                 if (context.getters.loggedInUser) {
                     var ownerTrips = trips.filter(
                         trip => trip.owner._id === context.getters.loggedInUser._id
@@ -148,18 +156,20 @@ export default {
             trip.members.splice(idx, 1);
             try {
                 await context.dispatch({ type: 'save', trip })
+                await context.dispatch('socketLeaveTrip', trip)
             } catch (err) {
                 LoggerService.error('152');
                 throw err;
             }
         },
-        async cancelRequesInTrip(context, { trip, user }) {
+        async cancelRequestInTrip(context, { trip, user }) {
             const idx = trip.pendings.findIndex(
                 currUser => currUser.userId === user._id
             );
             trip.pendings.splice(idx, 1);
             try {
                 await context.dispatch({ type: 'save', trip })
+                await context.dispatch('socketLeaveTrip', trip)
             } catch (err) {
                 LoggerService.error('164');
                 throw err;
@@ -178,6 +188,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
                 await context.dispatch({ type: 'updateUser', user })
+                await context.dispatch('socketApproveUser', trip)
             } catch (err) {
                 LoggerService.error('182');
                 throw err;
@@ -191,6 +202,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
                 await context.dispatch({ type: 'updateUser', user })
+                await context.dispatch('socketRejectUser', trip)
             } catch (err) {
                 LoggerService.error('195');
                 throw err;
@@ -200,6 +212,7 @@ export default {
             trip.likedBy.push({ userId: user._id })
             try {
                 await context.dispatch({ type: 'save', trip })
+                await context.dispatch('socketAddLike', trip)
             } catch (err) {
                 LoggerService.error('204');
                 throw err;
@@ -210,6 +223,7 @@ export default {
             trip.likedBy.splice(idx, 1)
             try {
                 await context.dispatch({ type: 'save', trip })
+                await context.dispatch('socketRemoveLike', trip)
             } catch (err) {
                 LoggerService.error('214');
                 throw err;

@@ -11,6 +11,8 @@ export default {
     emit,
 }
 
+
+
 socket.on('new request', (msg, trip, user) => {
     store.commit({type:'addRequest', msg})
     // store.commit({type:'update', trip})
