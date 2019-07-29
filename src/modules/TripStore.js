@@ -1,4 +1,5 @@
 import TripService from '../Services/TripService.js'
+import LoggerService from '../Services/LoggerService.js'
 
 
 export default {
@@ -67,6 +68,7 @@ export default {
                     context.commit({ type: 'setOwnerTrips', ownerTrips })
                 }
             } catch (err) {
+                LoggerService.error('71');
                 throw err;
             }
         },
@@ -79,6 +81,7 @@ export default {
                 } else return tripToShow
             }
             catch (err) {
+                LoggerService.error('84');
                 throw err;
             }
         },
@@ -89,9 +92,10 @@ export default {
             owner.myTrips.splice(idx, 1);
             try {
                 await TripService.remove(trip)
-                await context.dispatch({ type: 'updateUser', user })
+                await context.dispatch({ type: 'updateUser', owner })
                 context.commit({ type: 'remove', id: trip._id })
             } catch (err) {
+                LoggerService.error('98');
                 throw err;
             }
         },
@@ -110,6 +114,7 @@ export default {
                     context.commit({ type: 'save', trip: newTrip })
                     return newTrip
                 } catch (err) {
+                    LoggerService.error('117');
                     throw err;
                 }
             }
@@ -119,6 +124,7 @@ export default {
                 const url = await TripService.handleUploadImage(file)
                 return url;
             } catch (err) {
+                LoggerService.error('127');
                 throw err;
             }
         },
@@ -130,6 +136,7 @@ export default {
                 await context.dispatch({ type: 'updateUser', user })
                 await context.dispatch({ type: 'joinTrip', user, trip, room })
             } catch (err) {
+                LoggerService.error('139');
                 throw err;
             }
 
@@ -142,6 +149,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
             } catch (err) {
+                LoggerService.error('152');
                 throw err;
             }
         },
@@ -153,6 +161,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
             } catch (err) {
+                LoggerService.error('164');
                 throw err;
             }
         },
@@ -170,6 +179,7 @@ export default {
                 await context.dispatch({ type: 'save', trip })
                 await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
+                LoggerService.error('182');
                 throw err;
             }
         },
@@ -182,6 +192,7 @@ export default {
                 await context.dispatch({ type: 'save', trip })
                 await context.dispatch({ type: 'updateUser', user })
             } catch (err) {
+                LoggerService.error('195');
                 throw err;
             }
         },
@@ -190,6 +201,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
             } catch (err) {
+                LoggerService.error('204');
                 throw err;
             }
         },
@@ -199,6 +211,7 @@ export default {
             try {
                 await context.dispatch({ type: 'save', trip })
             } catch (err) {
+                LoggerService.error('214');
                 throw err;
             }
         }
