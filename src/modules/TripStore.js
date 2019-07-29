@@ -89,7 +89,7 @@ export default {
             owner.myTrips.splice(idx, 1);
             try {
                 await TripService.remove(trip)
-                await context.dispatch({ type: 'updateUser', user })
+                await context.dispatch({ type: 'updateUser', owner })
                 context.commit({ type: 'remove', id: trip._id })
             } catch (err) {
                 throw err;
