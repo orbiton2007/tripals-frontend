@@ -2,6 +2,16 @@
   <swiperSlide class="trip-preview">
     <div @click="goDetails">
       <v-img xs2 :src="trip.imgUrl" aspect-ratio="1.6"></v-img>
+      <div class="avatars flex space-between">
+        <div v-if="trip.members.length" class="flex">
+          <div v-for="(member, i) in members" :key="i" class="participants">
+            <img class="img-participant" v-if="i<3" :src="member.imgUrl" />
+          </div>
+        </div>
+        <div class="owner">
+          <img v-if="owner" :src="owner.imgUrl" />
+        </div>
+      </div>
 
       <div class="flex space-between">
         <div>
@@ -12,16 +22,6 @@
           <span class="likes-length">({{trip.likedBy.length}})</span>
           <i class="material-icons like">favorite_border</i>
         </div>
-      </div>
-      <div class="avatars">
-        <template v-if="trip.members.length">
-          <v-avatar v-for="(member, i) in members" :key="i" class="participants" size="38px">
-            <img class="img-participant" v-if="i<3" :src="member.imgUrl" />
-          </v-avatar>
-        </template>
-        <!-- <v-avatar class="owner" size="60px">
-          <img v-if="owner" :src="owner.imgUrl" />
-        </v-avatar>-->
       </div>
     </div>
   </swiperSlide>
@@ -38,8 +38,8 @@ export default {
   },
   data() {
     return {
-      members: []
-      // owner: {}
+      members: [],
+      owner: {}
     };
   },
   async created() {
@@ -51,10 +51,10 @@ export default {
         });
         this.members.push(member);
       });
-      // this.owner = await this.$store.dispatch({
-      //   type: "getUserById",
-      //   id: this.trip.owner._id
-      // });
+      this.owner = await this.$store.dispatch({
+        type: "getUserById",
+        id: this.trip.owner._id
+      });
     } catch (err) {
       console.log(err);
     }

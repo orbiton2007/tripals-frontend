@@ -28,6 +28,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/components/_TripList.scss";
+@import "../styles/views/_AllTrips.scss";
 </style>
 

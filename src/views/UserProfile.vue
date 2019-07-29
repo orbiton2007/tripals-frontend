@@ -10,16 +10,16 @@
       <div class="user-trips">
         <h3>{{user.firstName}} shared trips</h3>
         <div class="ownerTrips-container">
-          <TripList :trips="tripsUserShared" />
+          <TripListTrending :trips="tripsUserShared" />
         </div>
       </div>
       <div class="member-in">
         <h3>Member in</h3>
-        <TripList :trips="tripsUserMemberIn" />
+        <TripListTrending :trips="tripsUserMemberIn" />
       </div>
       <div class="pendin-in">
         <h3>Pending in</h3>
-        <TripList :trips="tripsUserPendigIn" />
+        <TripListTrending :trips="tripsUserPendigIn" />
       </div>
     </div>
   </section>
@@ -28,7 +28,7 @@
 <script>
 import Header from "../components/Header";
 import Login from "../components/Login";
-import TripList from "../components/TripList";
+import TripListTrending from "../components/TripListTrending";
 export default {
   data() {
     return {
@@ -70,7 +70,7 @@ export default {
   components: {
     Login,
     Header,
-    TripList
+    TripListTrending
   }
 };
 </script>
