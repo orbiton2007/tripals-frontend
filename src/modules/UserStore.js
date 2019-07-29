@@ -1,5 +1,6 @@
 import AuthService from '../Services/AuthService.js'
 import UserService from '../Services/UserService.js'
+import LoggerService from '../Services/LoggerService.js'
 
 export default {
     state: {
@@ -52,6 +53,7 @@ export default {
                 context.commit({ type: 'setLoggedInUser', user: loggedInUser })
                 await context.dispatch({ type: 'createRoom', loggedInUser })
             } catch (err) {
+                LoggerService.error('56');
                 throw err;
             }
         },
