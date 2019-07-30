@@ -86,10 +86,14 @@ button:focus {
 }
 
 .btn-new-trip {
-  font-weight: 550;
+  font-size: 1.3rem;
+  font-weight: 600;
   color: rgb(24, 24, 24);
 }
 
+.dark{
+  font-weight: 500;
+}
 .dark:hover,
 .btn-new-trip:hover {
   opacity: 0.7;

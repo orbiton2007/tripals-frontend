@@ -6,6 +6,7 @@
       <div class="user-details">
         <img class="img-user" :src="user.imgUrl" />
         <h3>{{user.firstName}} {{user.lastName}}</h3>
+        <p class="about-me">{{user.aboutMe}}</p>
       </div>
       <div class="user-trips">
         <h3>{{user.firstName}} shared trips</h3>
