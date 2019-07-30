@@ -10,16 +10,16 @@
       <div class="user-trips">
         <h3>{{user.firstName}} shared trips</h3>
         <div class="ownerTrips-container">
-          <TripListTrending :trips="tripsUserShared" />
+          <TripList :trips="tripsUserShared" />
         </div>
       </div>
       <div class="member-in">
         <h3>Member in</h3>
-        <TripListTrending :trips="tripsUserMemberIn" />
+        <TripList :trips="tripsUserMemberIn" />
       </div>
       <div class="pendin-in">
         <h3>Pending in</h3>
-        <TripListTrending :trips="tripsUserPendigIn" />
+        <TripList :trips="tripsUserPendigIn" />
       </div>
     </div>
   </section>
@@ -28,7 +28,7 @@
 <script>
 import Header from "../components/Header";
 import Login from "../components/Login";
-import TripListTrending from "../components/TripListTrending";
+import TripList from "../components/TripList";
 export default {
   data() {
     return {
@@ -44,7 +44,7 @@ export default {
     this.user = userToShow;
     try {
       await this.$store.dispatch({
-        type: "loadTrips",
+        type: "loadTrips"
       });
       this.$store.commit({ type: "setTripsUserShared", userId });
       this.$store.commit({ type: "setTripsUserPendingIn", userId });
@@ -70,7 +70,7 @@ export default {
   components: {
     Login,
     Header,
-    TripListTrending
+    TripList
   }
 };
 </script>

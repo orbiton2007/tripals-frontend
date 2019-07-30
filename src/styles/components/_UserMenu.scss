@@ -1,12 +1,12 @@
 .user-menu {
-    width: 200px;
+    width: 150px;
     height: auto;
     position: absolute;
     top: 61px;
-    right: 33px;
+    right: 42px;
     background: rgb(253, 253, 253);
     padding: 5px;
-    border-radius: 3px;
+    border-bottom-left-radius: 5px;
     border-left: 0.5px #e5e5e5 solid;
     border-right: 0.5px #e5e5e5 solid;
     border-bottom: 0.5px #e5e5e5 solid;
@@ -21,3 +21,16 @@ a {
     color: rgb(70, 70, 70);
     border-bottom: 0.5px #cecece solid;
 }
+
+
+
+@media screen and (max-width: 600px) {
+    .user-menu {
+        width: 140px;
+        height: auto;
+        position: absolute;
+        top: 61px;
+        right: 0px;
+        background: rgb(253, 253, 253);
+    }
+  }

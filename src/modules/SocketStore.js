@@ -16,6 +16,12 @@ export default {
         },
     },
     actions: {
+        socketInTripDetails(context, { tripId }) {
+            SocketService.emit('trip details', tripId)
+        },
+        disconnectFromTrip(context, { tripId }) {
+            SocketService.emit('disconnect trip', tripId)
+        },
         chatJoin(context, { chat, user }) {
             SocketService.on('chat newMsg', async msg => {
                 chat.msgs.push(msg)
@@ -35,26 +41,26 @@ export default {
             SocketService.emit('stop typing', { chat, user })
         },
         createRoom(context, { loggedInUser }) {
-            SocketService.emit('create room', loggedInUser )
+            SocketService.emit('create room', loggedInUser)
         },
         joinTrip(context, { user, trip, room }) {
             SocketService.emit('join trip', { user, trip, room })
         },
-        socketLeaveTrip(context, trip){
+        socketLeaveTrip(context, trip) {
             console.log('trip in socket store', trip);
-            
+
             SocketService.emit('leave trip', trip)
         },
-        socketAddLike(context, trip){
+        socketAddLike(context, trip) {
             SocketService.emit('like trip', trip)
         },
-        socketRemoveLike(context, trip){
+        socketRemoveLike(context, trip) {
             SocketService.emit('like trip', trip)
         },
-        socketApproveUser(context, trip){
+        socketApproveUser(context, trip) {
             SocketService.emit('approve user', trip)
         },
-        socketRejectUser(context, trip){
+        socketRejectUser(context, trip) {
             SocketService.emit('reject user', trip)
         },
     },

@@ -2,7 +2,7 @@
   <li class="member-container" v-if="user">
     <div class="flex column">
       <img class="user-img" @click="goUserProfile" :src="user.imgUrl" />
-      <div class="flex">
+      <div>
         <h4 class="name">{{user.firstName}} {{user.lastName}}</h4>
       </div>
     </div>

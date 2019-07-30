@@ -116,7 +116,7 @@ export default {
     };
   },
   async created() {
-    SocketService.on("update trip", async (trip) => {
+    SocketService.on("update trip", async trip => {
       this.trip = trip;
     });
     this.tripId = this.$route.params.id;
@@ -132,6 +132,10 @@ export default {
       await this.$store.dispatch({
         type: "getRoom",
         id: this.owner.notifications.roomId
+      });
+      await this.$store.dispatch({
+        type: "socketInTripDetails",
+        tripId: this.trip._id
       });
     } catch (err) {
       console.log("in created", err);
@@ -265,6 +269,12 @@ export default {
         console.log("not update", err);
       }
     }
+  },
+  async destroyed() {
+    await this.$store.dispatch({
+      type: "disconnectFromTrip",
+      tripId: this.trip._id
+    });
   },
   components: {
     AppHeader,

@@ -1,5 +1,6 @@
 <template>
   <section v-if="!loggedInUser" class="login-container">
+    <i class="material-icons btn-close" @click="closeLogin">close</i>
     <h2>Login</h2>
     <form @submit.prevent="login" class="flex column">
       <input
@@ -46,6 +47,9 @@ export default {
       } catch (err) {
         this.$swal("Wrong password or username", "", "error");
       }
+    },
+    closeLogin(){
+      this.$store.commit("toggleLogin");
     }
   }
 };

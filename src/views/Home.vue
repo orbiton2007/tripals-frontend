@@ -19,7 +19,7 @@
     </div>
     <div class="all-trips flex column">
       <div class="title-btn-div flex space-between">
-        <h2 class="all-trips-title">All Trips</h2>
+        <h2 class="all-trips-title">Popular</h2>
         <router-link class="btn-show-all" to="/AllTrips">Show all</router-link>
       </div>
       <TripListTrending :trips="mostPopularTrips" />

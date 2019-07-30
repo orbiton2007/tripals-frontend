@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       swiperOption: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 30,
         // init: false,
         pagination: {
@@ -33,14 +33,14 @@ export default {
           prevEl: ".swiper-button-prev"
         },
         breakpoints: {
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30
-          },
-          850: {
+          1100: {
             slidesPerView: 2,
             spaceBetween: 30
           },
+          // 850: {
+          //   slidesPerView: 2,
+          //   spaceBetween: 30
+          // },
           640: {
             slidesPerView: 1,
             spaceBetween: 20
