@@ -149,20 +149,20 @@ export default {
       return this.$store.getters.loggedInUser;
     },
     memberIn() {
-      var alreadyMember = this.trip.members.some(
+      let alreadyMember = this.trip.members.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
       return alreadyMember;
     },
     pendingIn() {
-      var pendingRequest = this.trip.pendings.some(
+      let pendingRequest = this.trip.pendings.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
       return pendingRequest;
     },
     unlikeTrip() {
       if (this.loggedInUser) {
-        var userId = this.trip.likedBy.find(
+        let userId = this.trip.likedBy.find(
           currUser => currUser.userId === this.loggedInUser._id
         );
         if (!userId) return true;

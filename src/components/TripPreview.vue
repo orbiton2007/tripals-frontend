@@ -45,7 +45,7 @@ export default {
   async created() {
     try {
       this.trip.members.forEach(async userId => {
-        var member = await this.$store.dispatch({
+        let member = await this.$store.dispatch({
           type: "getUserById",
           id: userId.userId
         });
