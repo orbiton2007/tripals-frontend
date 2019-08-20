@@ -7,10 +7,12 @@
       <router-link class="link-menu" to="/about">About</router-link>
     </div>
     <div>
-      <router-link class="link-menu" to="/TripEdit">
-        New Trip
-        <!-- <span class="dark btn-new-trip">New Trip</span> -->
-      </router-link>
+      <router-link class="link-menu" to="/TripEdit">New Trip</router-link>
+    </div>
+    <div>
+      <a href="#" class="link-menu" @click="openRequests" v-if="loggedInUser">Requests
+        <!-- <span class="dark">Requests</span> -->
+      </a>
     </div>
     <div>
       <button class="btn-link dark link-menu" v-if="!loggedInUser" @click="toggleLogin">Login</button>
@@ -23,10 +25,10 @@
 
 <script>
 import { setTimeout } from "timers";
+// import Requests from "./Requests";
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   computed: {
@@ -37,8 +39,16 @@ export default {
   methods: {
     toggleLogin() {
       this.$store.commit("toggleLogin");
+      this.$emit("closeMenu");
+    },
+    openRequests() {
+      this.$emit('showRequests')
       this.$emit('closeMenu')
-    }
+      // this.showRequests = !this.showRequests;
+    },
+  },
+  components:{
+    // Requests
   }
 };
 </script>

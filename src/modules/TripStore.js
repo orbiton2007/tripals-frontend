@@ -26,7 +26,7 @@ export default {
             state.trips.splice(idx, 1)
         },
         update(state, { trip }) {
-            var idx = state.trips.findIndex(cuurTrip => cuurTrip._id === trip._id)
+            const idx = state.trips.findIndex(cuurTrip => cuurTrip._id === trip._id)
             state.trips.splice(idx, 1, trip)
         },
         save(state, { trip }) {
@@ -70,7 +70,7 @@ export default {
                 context.commit({ type: 'setTrips', trips })
                 context.commit({ type: 'setMostPopularTrips', trips })
                 if (context.getters.loggedInUser) {
-                    var ownerTrips = trips.filter(
+                    let ownerTrips = trips.filter(
                         trip => trip.owner._id === context.getters.loggedInUser._id
                     );
                     context.commit({ type: 'setOwnerTrips', ownerTrips })
@@ -82,11 +82,8 @@ export default {
         },
         async  getById(context, { tripId }) {
             try {
-                const tripToShow = context.state.trips.find(currTrip => currTrip._id === tripId)
-                if (!tripToShow) {
-                    var trip = await TripService.getById(tripId)
-                    return trip;
-                } else return tripToShow
+                const trip = await TripService.getById(tripId)
+                return trip;
             }
             catch (err) {
                 LoggerService.error('84');
@@ -219,7 +216,7 @@ export default {
             }
         },
         async removeLike(context, { trip, user }) {
-            var idx = trip.likedBy.findIndex(currUser => currUser.userId === user._id)
+            const idx = trip.likedBy.findIndex(currUser => currUser.userId === user._id)
             trip.likedBy.splice(idx, 1)
             try {
                 await context.dispatch({ type: 'save', trip })

@@ -36,6 +36,9 @@ i:hover{
   max-width: 100%;
   margin: 0 auto;
 }
+.owner-details .img-name h4{
+  text-align: center;
+}
 
 .owner-details .user-img {
   padding: 2px;
@@ -113,7 +116,7 @@ i:hover{
 }
 
 .trip-members .members {
-  padding: 10px;
+  padding: 10px 5px 10px 5px;
 }
 
 .trip-members .pendings {

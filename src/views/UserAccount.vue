@@ -33,7 +33,7 @@
           </div>
         </label>
         <input type="file" class="short-input" />
-        <button>Save</button>
+        <div class="div-btn-save"><button>Save</button></div>
       </form>
     </div>
   </section>

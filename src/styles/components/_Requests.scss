@@ -15,9 +15,24 @@
 ul{
     padding: 0;
 }
+.btn-close{
+    float: right;
+    // font-size: 1.3rem;
+
+}
 .request{
     padding: 5px;
     font-size: 1.2rem;
     font-weight: 500;
     border-bottom: 0.5px #e5e5e5 solid;
 }
+
+@media screen and (max-width: 600px) {
+    .requests {
+        position: absolute;
+        top: 61px;
+        right: 0px;
+        width: 350px;
+        height: 170px;
+    }
+  }

@@ -1,5 +1,6 @@
 <template>
   <section class="requests">
+    <i class="material-icons btn-close" @click="closeRequests">close</i>
     <ul v-if="room && requests">
       <li class="request" v-for="(msg, i) in requests" :key="i">{{msg}}</li>
     </ul>
@@ -29,7 +30,11 @@ export default {
       return this.$store.getters.requests;
     }
   },
-  methods: {}
+  methods: {
+    closeRequests() {
+      this.$emit("requestsModal");
+    }
+  }
 };
 </script>
 

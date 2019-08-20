@@ -4,7 +4,6 @@
       <img class="user-img-_Pending" @click="goUserProfile" :src="user.imgUrl" />
       <div>
         <h5 class="user-details-_Pending-name">{{user.firstName}} {{user.lastName}}</h5>
-        <!-- <h5 class="user-details-_Pending-age">{{user.age}}</h5> -->
       </div>
       <div class="flex">
         <i

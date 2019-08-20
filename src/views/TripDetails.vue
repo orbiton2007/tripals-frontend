@@ -116,7 +116,7 @@ export default {
     };
   },
   async created() {
-    SocketService.on("update trip", async (trip) => {
+    SocketService.on("update trip", async trip => {
       this.trip = trip;
     });
     this.tripId = this.$route.params.id;
@@ -133,6 +133,10 @@ export default {
         type: "getRoom",
         id: this.owner.notifications.roomId
       });
+      await this.$store.dispatch({
+        type: "socketInTripDetails",
+        tripId: this.trip._id
+      });
     } catch (err) {
       console.log("in created", err);
     }
@@ -145,20 +149,20 @@ export default {
       return this.$store.getters.loggedInUser;
     },
     memberIn() {
-      var alreadyMember = this.trip.members.some(
+      let alreadyMember = this.trip.members.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
       return alreadyMember;
     },
     pendingIn() {
-      var pendingRequest = this.trip.pendings.some(
+      let pendingRequest = this.trip.pendings.some(
         currUser => currUser.userId === this.loggedInUser._id
       );
       return pendingRequest;
     },
     unlikeTrip() {
       if (this.loggedInUser) {
-        var userId = this.trip.likedBy.find(
+        let userId = this.trip.likedBy.find(
           currUser => currUser.userId === this.loggedInUser._id
         );
         if (!userId) return true;
@@ -265,6 +269,12 @@ export default {
         console.log("not update", err);
       }
     }
+  },
+  async destroyed() {
+    await this.$store.dispatch({
+      type: "disconnectFromTrip",
+      tripId: this.trip._id
+    });
   },
   components: {
     AppHeader,

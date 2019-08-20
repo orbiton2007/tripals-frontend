@@ -2,18 +2,17 @@
   <section class="nav" app :class="{ colorBg: colorBg }">
     <div class="navbar">
       <div class="iconMenu-logo-div">
-      <i class="material-icons menu" @click="openMenu">menu</i>
-      <div class="logo-container">
-        <h1 class="logo">TRIPALS</h1>
-      </div>
-
+        <i class="material-icons menu" @click="toggleMenu">menu</i>
+        <div class="logo-container">
+          <h1 class="logo">TRIPALS</h1>
+        </div>
       </div>
       <div class="nav-links">
         <router-link v-if="!loggedInUser" to="/Signup">
           <span class="dark">Signup</span>
         </router-link>
         <button class="btn-link dark" v-if="!loggedInUser" @click="toggleLogin">Login</button>
-        <a href="#" @click="openRequests" v-if="loggedInUser">
+        <a href="#" @click="requestsModal" v-if="loggedInUser">
           <span class="dark">Requests</span>
         </a>
         <router-link to="/TripEdit">
@@ -25,12 +24,22 @@
         <router-link to="/">
           <span class="dark">Home</span>
         </router-link>
-        <img v-if="loggedInUser" @click="openUserMenu" class="user-img" :src="loggedInUser.imgUrl" />
+        <img
+          v-if="loggedInUser"
+          @click="toggleUserMenu"
+          class="user-img"
+          :src="loggedInUser.imgUrl"
+        />
       </div>
-      <img v-if="loggedInUser" @click="openUserMenu" class="user-img-menu" :src="loggedInUser.imgUrl" />
+      <img
+        v-if="loggedInUser"
+        @click="toggleUserMenu"
+        class="user-img-menu"
+        :src="loggedInUser.imgUrl"
+      />
       <UserMenu v-if="showUserMenu" :user="loggedInUser" />
-      <AppMenu v-if="showMenu" @closeMenu="closeMenu"/>
-      <Requests v-if="showRequests" />
+      <AppMenu v-if="showMenu" @closeMenu="closeMenu" @showRequests="requestsModal" />
+      <Requests v-if="showRequests" @requestsModal="requestsModal" />
     </div>
   </section>
 </template>
@@ -64,16 +73,16 @@ export default {
     toggleLogin() {
       this.$store.commit("toggleLogin");
     },
-    openUserMenu() {
+    toggleUserMenu() {
       this.showUserMenu = !this.showUserMenu;
     },
-    openMenu() {
+    toggleMenu() {
       this.showMenu = !this.showMenu;
     },
-    openRequests() {
+    requestsModal() {
       this.showRequests = !this.showRequests;
     },
-    closeMenu(){
+    closeMenu() {
       this.showMenu = !this.showMenu;
     }
   },

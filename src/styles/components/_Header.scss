@@ -73,6 +73,7 @@ button:focus {
 .user-img {
   cursor: pointer;
   width: 30px;
+  height: 30px;
   margin-left: 20px;
   border-radius: 50%;
   padding: 1px;
@@ -86,10 +87,14 @@ button:focus {
 }
 
 .btn-new-trip {
-  font-weight: 550;
+  font-size: 1.3rem;
+  font-weight: 600;
   color: rgb(24, 24, 24);
 }
 
+.dark{
+  font-weight: 500;
+}
 .dark:hover,
 .btn-new-trip:hover {
   opacity: 0.7;
