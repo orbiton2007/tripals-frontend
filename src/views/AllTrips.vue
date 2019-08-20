@@ -1,5 +1,6 @@
 <template>
   <section class="trip-list">
+    <AppHeader class="colorBg" />
     <ul class="ul-list">
       <TripPreview v-for="(trip, i) in trips" :trip="trip" :key="i" />
     </ul>
@@ -8,6 +9,7 @@
 
 <script>
 import TripPreview from "../components/TripPreview";
+import AppHeader from "../components/Header";
 export default {
   computed: {
     trips() {
@@ -22,7 +24,8 @@ export default {
     }
   },
   components:{
-      TripPreview
+      TripPreview,
+      AppHeader
   }
 };
 </script>

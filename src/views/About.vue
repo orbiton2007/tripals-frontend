@@ -12,8 +12,7 @@
         <img src="../assets/img/about/or1.png" alt>
       </a>
       <h1>Or Biton</h1>
-      <p>Or Biton ,  , Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde exercitationem adipisci, architecto rem repellat accusantium ratione quidem voluptas vitae dignissimos
-         autem aliquid alias consequatur dolores, nostrum suscipit sequi iusto perspiciatis?</p>
+      <p>Hi, i'm Or, 27 years old, a junior full stack web deveoloper. Just finished the Coding Academy bootcamp and also got BEd in Mathematics Teacher Education from Gordon College of Education. looking for my next challenge</p>
        <a class="linkdin"  href="https://www.linkedin.com/in/or-biton-024b3018a/">
        <i class="fab fa-linkedin"></i>
       </a>
@@ -22,8 +21,7 @@
       <img src="../assets/img/about/ran1.png" alt="Alex Yeruhin">
       <h1>Ran Albagli</h1>
       <p>
-        Ran Albagli, 29 , Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde exercitationem adipisci, architecto rem repellat accusantium ratione quidem voluptas vitae dignissimos
-         autem aliquid alias consequatur dolores, nostrum suscipit sequi iusto perspiciatis?
+       Hi, i'm Ran, 29 years old, a junior full stack web deveoloper. Just finished the Coding Academy bootcamp and also got B.Sc in Computer Science from Holon Institute of Technology. looking for my next challenge
         </p>
        <a class="linkdin"  href="https://www.linkedin.com/in/ran-albagli-05276518a/">
        <i class="fab fa-linkedin"></i>
